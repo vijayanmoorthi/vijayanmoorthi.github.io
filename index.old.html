@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijayan | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Portfolio Gallery Section */
+        .portfolio-section {
+            background: white;
+            padding: 5rem 2rem;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .portfolio-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transform: translateY(0);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item.hide {
+            display: none;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Gallery item animations */
+        .gallery-item {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        /* Initial state for non-web-design items */
+        .gallery-item:not([data-category="web-design"]) {
+            display: none;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-dark);
+            color: white;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .expertise-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .expertise-list i {
+            color: var(--primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill i {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo"></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="home" class="hero">
+        <div>
+            <h1>Hi, I'm Vijayan S</h1>
+            <p>Full Stack Developer | Laravel | PHP | MySQL</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate Full-Stack PHP & Laravel Developer with over 5 years of professional experience in
+                    building scalable, secure, and high-performance web applications. My expertise lies in developing
+                    custom CMS, CRM, and SaaS-based platforms, integrating REST APIs, and optimizing backend systems for
+                    maximum efficiency.</p>
+                <p>I've also contributed to various enterprise-level systems like crypto CRMs, LMS platforms, and
+                    e-commerce applications, using technologies such as Laravel, PHP, MySQL, JavaScript, jQuery, and
+                    Puppeteer. When I'm not writing code, I love exploring new tools, mentoring peers, and occasionally
+                    diving into creative projects.</p>
+            </div>
+            <div class="about-text">
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-size: 1.5rem;">What I Do Best</h3>
+                <ul class="expertise-list">
+                    <li><i class="fas fa-check-circle"></i> Develop end-to-end web applications with Laravel & PHP</li>
+                    <li><i class="fas fa-check-circle"></i> Build SaaS platforms with real-time customization</li>
+                    <li><i class="fas fa-check-circle"></i> Integrate APIs for payments and external systems</li>
+                    <li><i class="fas fa-check-circle"></i> Optimize databases and backend performance</li>
+                    <li><i class="fas fa-check-circle"></i> Collaborate with cross-functional teams</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="margin: 3rem 0 2rem; color: var(--primary); font-size: 1.5rem; text-align: center;">Technical Skills
+        </h3>
+        <div class="skills-grid">
+            <div class="skill">
+                <i class="fab fa-php fa-2x"></i>
+                <span>PHP</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-laravel fa-2x"></i>
+                <span>Laravel</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-js fa-2x"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="skill">
+                <i class="fas fa-database fa-2x"></i>
+                <span>MySQL</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-html5 fa-2x"></i>
+                <span>HTML5</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-css3-alt fa-2x"></i>
+                <span>CSS3</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-bootstrap fa-2x"></i>
+                <span>Bootstrap</span>
+            </div>
+            <div class="skill">
+                <i class="fab fa-git-alt fa-2x"></i>
+                <span>Git</span>
+            </div>
+            <div class="skill">
+                <i class="fas fa-server fa-2x"></i>
+                <span>REST APIs</span>
+            </div>
+            <div class="skill">
+                <i class="fa-brands fa-cpanel fa-2x"></i>
+                <span>CPanel</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h2>Portfolio Gallery</h2>
+            <p style="color: var(--text-light); margin-top: 1rem;">A showcase of my design work, web development
+                projects, and creative solutions</p>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <!-- <button class="filter-btn active" data-filter="all">All</button> -->
+                <button class="filter-btn active" data-filter="web-design">Web Design</button>
+                <button class="filter-btn" data-filter="php-backend">PHP</button>
+                <button class="filter-btn" data-filter="laravel">Laravel</button>
+            </div>
+
+            <style>
+                .gallery-grid {
+                    opacity: 0;
+                    animation: fadeIn 0.5s ease forwards;
+                }
+                
+                .gallery-item {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    cursor: pointer;
+                    background: white;
+                }
+                
+                .gallery-item::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                    z-index: 1;
+                }
+                
+                .gallery-item img {
+                    width: 100%;
+                    height: 250px;
+                    object-fit: cover;
+                    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                    will-change: transform;
+                    display: block;
+                }
+                
+                .gallery-item:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+                }
+                
+                .gallery-item:hover::before {
+                    opacity: 1;
+                }
+                
+                .gallery-item:hover img {
+                    transform: scale(1.05);
+                }
+                
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .gallery-item:not([data-category="web-design"]) {
+                    display: none;
+                }
+            </style>
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Web Design Items -->
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/adventure-company-portfolio-image.png"
+                        alt="Adventure Company Website Design"
+                        title="Adventure Company Website Design">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/ardent-portfolio-image.png" 
+                        alt="Ardent Company Website Design"
+                        title="Ardent Company Website Design">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/bpn-construction-portfolio.jpg"
+                        alt="BPN Construction Company Website"
+                        title="BPN Construction Company Website">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/car-project-portfolio-image.png"
+                        alt="Car Project Website Design"
+                        title="Car Project Website Design">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/creative-website-portfolio-image.png"
+                        alt="Creative Agency Website Design"
+                        title="Creative Agency Website Design">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/gate-easy-portfolio.jpg" 
+                        alt="Gate Easy Platform Design"
+                        title="Gate Easy Platform Design">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/guruji-construction-portfolio-image.png"
+                        alt="Guruji Construction Company Website"
+                        title="Guruji Construction Company Website">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/mu3interactive-portfolio-image.png"
+                        alt="MU3 Interactive Digital Agency Website"
+                        title="MU3 Interactive Digital Agency Website">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/painting-company-portfolio-image.png"
+                        alt="Painting Company Service Website"
+                        title="Painting Company Service Website">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/sgr-interior-portfolio-image.png"
+                        alt="SGR Interior Design Portfolio Website"
+                        title="SGR Interior Design Portfolio Website">
+                </div>
+                <div class="gallery-item" data-category="web-design">
+                    <img src="./images/portfolio/main-images/webdesign/paridetal-portfolio-image.png"
+                        alt="Paridetal Portfolio Website"
+                        title="Paridetal Portfolio Website">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/ardent-app-portfolio-image.png"
+                        alt="Ardent E-commerce Application"
+                        title="Ardent E-commerce Application">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/big-basket-admindashboard-portfolio-image.png"
+                        alt="Big Basket Admin Dashboard"
+                        title="Big Basket Admin Dashboard">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/big-basket-portfolio-image.png"
+                        alt="Big Basket E-commerce Platform"
+                        title="Big Basket E-commerce Platform">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/doctor-appointment-admindashboard-portfolio-image.png"
+                        alt="Doctor Appointment System Dashboard"
+                        title="Doctor Appointment System Dashboard">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/ecommerce-plaform-admin-dashboard-portfolio.jpg"
+                        alt="E-commerce Platform Admin Dashboard"
+                        title="E-commerce Platform Admin Dashboard">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/ecommerce-platform-portfolio.jpg"
+                        alt="E-commerce Platform Frontend"
+                        title="E-commerce Platform Frontend">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/lumeria-foods-portfolio-image.png"
+                        alt="Lumeria Foods E-commerce Platform"
+                        title="Lumeria Foods E-commerce Platform">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/urban-farming-portfolio-image.png"
+                        alt="Urban Farming E-commerce Solution"
+                        title="Urban Farming E-commerce Solution">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/vencar-dashbaord-portfolio-image.png"
+                        alt="Vencar Admin Dashboard"
+                        title="Vencar Admin Dashboard">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/vencar-portfolio-image.png" 
+                        alt="Vencar E-commerce Platform"
+                        title="Vencar E-commerce Platform">
+                </div>
+                <div class="gallery-item" data-category="php-backend">
+                    <img src="./images/portfolio/main-images/ecommerce/wonder-cuts-admindashboard-portfolio-image.png"
+                        alt="Wonder Cuts Salon Management Dashboard"
+                        title="Wonder Cuts Salon Management Dashboard">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/fido-academy-portfolio-image.jpg"
+                        alt="Fido Academy Learning Platform"
+                        title="Fido Academy Learning Platform">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/fido-markets-portfolio-image.jpg"
+                        alt="Fido Markets Trading Platform"
+                        title="Fido Markets Trading Platform">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/fido-meta-portfolio-image.jpg"
+                        alt="Fido Meta Analytics Dashboard"
+                        title="Fido Meta Analytics Dashboard">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/fido-metaverse-portfolio-image.jpg"
+                        alt="Acting School"
+                        alt="Fido Meta Verse Dashboard"
+                        title="Fido Meta Verse Dashboard">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/mydeam-portfolio-image.jpg"
+                        alt="Acting School"
+                        alt="My Dream Dashboard"
+                        title="My Dream Dashboard">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/payroll-admindashboard-portfolio-image.png"
+                        alt="Payroll Management System Dashboard"
+                        title="Payroll Management System Dashboard">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/school-management-portfolio-image.png"
+                        alt="School Management System"
+                        title="School Management System">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/sesshans-portfolio-image.png"
+                        alt="Sesshans Business Platform"
+                        title="Sesshans Business Platform">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/sivan-surface-solution-portfolio-image.png"
+                        alt="Sivan Surface Solutions Website"
+                        title="Sivan Surface Solutions Website">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/trip-company-portfolio-image.png"
+                        alt="Trip Company Booking Platform"
+                        title="Trip Company Booking Platform">
+                </div>
+                <div class="gallery-item" data-category="laravel">
+                    <img src="./images/portfolio/main-images/laravel/ziona-holdings-portfolio-image.jpg"
+                        alt="Ziona Holdings Corporate Website"
+                        title="Ziona Holdings Corporate Website">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" style="margin: 0px; padding-top: 0px; padding-bottom: 0px;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 5rem 2rem;">
+            <h2 style="color: white;">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>vijayan.info97@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 72991 33872</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Maduravoyal, Chennai, IN - 600 095</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- <script src="js/timeline.js"></script> -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Portfolio filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryGrid = document.querySelector('.gallery-grid');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Fade out
+                galleryGrid.style.opacity = '0';
+                galleryGrid.style.transform = 'translateY(20px)';
+                
+                // Wait for fade out
+                setTimeout(() => {
+                    // Update visibility
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Fade in
+                    requestAnimationFrame(() => {
+                        galleryGrid.style.opacity = '1';
+                        galleryGrid.style.transform = 'translateY(0)';
+                    });
+                }, 300);
+            });
+        });
+    </script>
+
+    <!-- Enhanced Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add smooth scrolling behavior to all links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Get the target section name from the href
+                    const targetId = this.getAttribute('href').replace('#', '');
+                    const targetSection = document.getElementById(targetId) ||
+                        document.querySelector(`section[data-section="${targetId}"]`) ||
+                        document.querySelector(`section.${targetId}`);
+
+                    if (targetSection) {
+                        // Calculate position accounting for fixed header
+                        const headerOffset = document.querySelector('nav').offsetHeight;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        // Smooth scroll to target
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Update active state
+                        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Update active state on scroll
+            const handleScroll = () => {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                const headerHeight = document.querySelector('nav').offsetHeight;
+
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.id || section.getAttribute('data-section') || section.classList[0];
+
+                    if (window.pageYOffset >= sectionTop &&
+                        window.pageYOffset < sectionTop + sectionHeight) {
+                        current = sectionId;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            // Add scroll event listener with throttling
+            let isScrolling;
+            window.addEventListener('scroll', () => {
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(handleScroll, 50);
+            });
+
+            // Initial check for active section
+            handleScroll();
+        });
+    </script>
+
+    <style>
+        /* Navigation enhancements */
+        nav a {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--primary) !important;
+        }
+
+        /* Smooth scroll behavior for the whole page */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            /* Adjust based on your header height */
+        }
+
+        /* Ensure sections have padding to account for fixed header */
+        section {
+            scroll-margin-top: 80px;
+            /* Adjust based on your header height */
+        }
+    </style>
+</body>
+
+</html>
