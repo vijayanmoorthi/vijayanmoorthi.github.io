@@ -1,0 +1,464 @@
+/* Fixed portfolio navigation */
+
+.portfolio-navbar {
+    --nav-text: #e8ecff;
+    --nav-muted: #8994b3;
+    --nav-purple: #a99aff;
+    --nav-blue: #67baff;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 15px clamp(20px, 5vw, 76px);
+    font-family: "Montserrat", sans-serif;
+    transition: padding 220ms ease;
+}
+
+.portfolio-navbar *,
+.portfolio-navbar *::before,
+.portfolio-navbar *::after {
+    box-sizing: border-box;
+}
+
+.portfolio-navbar-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    max-width: 1440px;
+    min-height: 68px;
+    margin-inline: auto;
+    padding: 0 21px;
+    border: 1px solid rgba(143, 153, 194, 0.19);
+    border-radius: 16px;
+    background: rgba(10, 14, 29, 0.76);
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.12);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    transition:
+        min-height 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.portfolio-navbar.is-scrolled {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.portfolio-navbar.is-scrolled .portfolio-navbar-inner {
+    min-height: 60px;
+    border-color: rgba(143, 153, 194, 0.25);
+    background: rgba(8, 12, 25, 0.93);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.22);
+}
+
+/* Branding */
+
+.portfolio-navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 11px;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.portfolio-navbar-logo {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    color: #e8e4ff;
+    background:
+        linear-gradient(#11162c, #11162c) padding-box,
+        linear-gradient(135deg, #4dbbff, #8b66ff 65%, #c3a1ff) border-box;
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -2px;
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.portfolio-navbar-brand:hover .portfolio-navbar-logo {
+    transform: rotate(-5deg);
+    box-shadow: 0 0 20px rgba(126, 102, 255, 0.24);
+}
+
+.portfolio-navbar-brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.portfolio-navbar-brand-name {
+    color: #f0f2ff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.portfolio-navbar-brand-name>span {
+    color: var(--nav-purple);
+}
+
+.portfolio-navbar-brand-role {
+    color: #7985a4;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    white-space: nowrap;
+}
+
+/* Right-aligned navigation */
+
+.portfolio-navbar-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    min-width: 0;
+    margin-left: auto;
+}
+
+.portfolio-navbar-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #9da8c5;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition:
+        color 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease;
+}
+
+.portfolio-navbar-link:hover {
+    color: #f1f2ff;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.portfolio-navbar-link.active {
+    border-color: rgba(147, 127, 255, 0.18);
+    color: #e3deff;
+    background: linear-gradient(115deg,
+            rgba(126, 101, 255, 0.13),
+            rgba(80, 135, 255, 0.055));
+}
+
+.portfolio-navbar-link-number {
+    color: #677391;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.portfolio-navbar-link.active .portfolio-navbar-link-number {
+    color: #b1a4ff;
+}
+
+.portfolio-navbar-link-indicator {
+    position: absolute;
+    bottom: 4px;
+    left: 13px;
+    right: 13px;
+    height: 2px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #4bb8ff, #a080ff);
+    box-shadow: 0 0 10px rgba(104, 124, 255, 0.4);
+    opacity: 0;
+    transform: scaleX(0.45);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+.portfolio-navbar-link.active .portfolio-navbar-link-indicator {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Mobile menu elements are hidden on desktop */
+
+.portfolio-navbar-mobile-heading {
+    display: none;
+}
+
+.portfolio-navbar-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 1px solid rgba(143, 153, 194, 0.2);
+    border-radius: 10px;
+    color: #dfe4ff;
+    background: rgba(255, 255, 255, 0.035);
+    cursor: pointer;
+}
+
+.portfolio-navbar-menu-toggle>span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-navbar-menu-toggle:hover,
+.portfolio-navbar-menu-toggle.is-open {
+    border-color: rgba(153, 134, 255, 0.4);
+    color: #b9aaff;
+    background: rgba(142, 122, 255, 0.09);
+}
+
+/* Keyboard accessibility */
+
+.portfolio-navbar button:focus-visible {
+    outline: 2px solid #65c7ff;
+    outline-offset: 4px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .portfolio-navbar {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .portfolio-navbar-inner {
+        gap: 15px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .portfolio-navbar-link {
+        gap: 6px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 10px;
+    }
+
+    .portfolio-navbar-brand {
+        gap: 9px;
+    }
+
+    .portfolio-navbar-logo {
+        width: 39px;
+        height: 39px;
+        font-size: 18px;
+    }
+
+    .portfolio-navbar-brand-name {
+        font-size: 14px;
+    }
+
+    .portfolio-navbar-brand-role {
+        font-size: 6px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Mobile dropdown */
+
+@media (max-width: 700px) {
+    .portfolio-navbar {
+        padding: 12px 20px;
+    }
+
+    .portfolio-navbar.is-scrolled {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .portfolio-navbar-inner {
+        min-height: 61px;
+        gap: 12px;
+        padding: 0 13px;
+        border-radius: 14px;
+    }
+
+    .portfolio-navbar.is-scrolled .portfolio-navbar-inner {
+        min-height: 57px;
+    }
+
+    .portfolio-navbar-menu-toggle {
+        display: inline-flex;
+    }
+
+    .portfolio-navbar-links {
+        position: absolute;
+        top: calc(100% + 9px);
+        right: 0;
+        left: 0;
+        z-index: 1001;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+
+        margin: 0;
+        padding: 13px;
+        border: 1px solid rgba(143, 153, 194, 0.2);
+        border-radius: 14px;
+        background: rgba(10, 14, 29, 0.97);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        -webkit-backdrop-filter: blur(22px);
+        backdrop-filter: blur(22px);
+
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-7px);
+        transform-origin: top center;
+        transition:
+            opacity 180ms ease,
+            transform 180ms ease,
+            visibility 180ms ease;
+    }
+
+    .portfolio-navbar-links.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .portfolio-navbar-mobile-heading {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 6px 10px 10px;
+        color: #7985a5;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+    }
+
+    .portfolio-navbar-mobile-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #a99aff;
+        box-shadow: 0 0 8px rgba(169, 154, 255, 0.5);
+    }
+
+    .portfolio-navbar-link {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 45px;
+        padding: 0 12px;
+        gap: 12px;
+        border-radius: 8px;
+        font-size: 12px;
+    }
+
+    .portfolio-navbar-link-number {
+        width: 19px;
+        font-size: 9px;
+    }
+
+    .portfolio-navbar-link-indicator {
+        top: 9px;
+        bottom: 9px;
+        left: 0;
+        right: auto;
+        width: 2px;
+        height: auto;
+        transform: scaleY(0.4);
+    }
+
+    .portfolio-navbar-link.active .portfolio-navbar-link-indicator {
+        transform: scaleY(1);
+    }
+}
+
+/* Small phones */
+
+@media (max-width: 420px) {
+    .portfolio-navbar {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .portfolio-navbar-inner {
+        min-height: 57px;
+        gap: 8px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .portfolio-navbar-logo {
+        width: 35px;
+        height: 35px;
+        border-radius: 10px;
+        font-size: 17px;
+    }
+
+    .portfolio-navbar-brand {
+        gap: 8px;
+    }
+
+    .portfolio-navbar-brand-name {
+        font-size: 13px;
+    }
+
+    .portfolio-navbar-brand-role {
+        font-size: 5px;
+        letter-spacing: 0.8px;
+    }
+
+    .portfolio-navbar-menu-toggle {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 340px) {
+    .portfolio-navbar-brand-role {
+        display: none;
+    }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-navbar *,
+    .portfolio-navbar *::before,
+    .portfolio-navbar *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
